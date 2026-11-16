@@ -27,6 +27,8 @@ chat.
   [Agent Skill](https://agentskills.io) plus ready-made rule files for Cursor,
   Copilot, Windsurf and `AGENTS.md` tools, and paste-in prompts for chat apps
   and local models.
+- **Kept current.** A weekly job checks every sheet against the upstream guide
+  it came from and opens an issue when Google changes a guide.
 - **Free and open.** Every rule links back to its original guide.
 
 ## How it works
@@ -194,6 +196,7 @@ codetone/
 │   ├── agents-md/                # AGENTS.md router + rule sheets
 │   └── prompts/                  # system prompts for chat apps / APIs
 ├── scripts/build_adapters.py     # regenerates adapters/ from references/
+├── scripts/check_upstream.py    # flags sheets whose upstream guide changed
 ├── tests/                        # 80+ mechanical & contract tests (pytest)
 ├── evals/                        # routing & review eval fixtures and answer keys
 ├── .claude-plugin/               # Claude Code plugin + marketplace manifest

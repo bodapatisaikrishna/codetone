@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Added upstream drift checking: `scripts/upstream.json` maps each rule sheet
+  to the files it was written from, `scripts/upstream.lock.json` records the
+  upstream commit each was last checked against, and a weekly workflow opens an
+  issue when a guide changes. Baseline recorded on 2026-11-16, the date of the
+  1.2.0 fact-check.
+
 ## 1.3.1 — 2026-11-16
 
 - Comprehensive testing suite: restored and expanded mechanical tests (80+ checks in `tests/test_skill.py`) and full behavioral evaluation suite (`evals/`).

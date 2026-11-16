@@ -1,0 +1,127 @@
+{
+  "angular": {
+    "repo": "angular/angular",
+    "branch": "main",
+    "paths": ["adev/src/content/best-practices/style-guide.md"]
+  },
+  "common-lisp": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["lispguide.md"]
+  },
+  "cpp": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["cppguide.md"]
+  },
+  "csharp": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["csharpguide.md"]
+  },
+  "dart": {
+    "repo": "dart-lang/site-www",
+    "branch": "main",
+    "paths": [
+      "src/content/effective-dart/style.md",
+      "src/content/effective-dart/documentation.md",
+      "src/content/effective-dart/usage.md",
+      "src/content/effective-dart/design.md"
+    ]
+  },
+  "go": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["go/guide.md", "go/decisions.md", "go/best-practices.md"]
+  },
+  "haskell": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["haskellguide.md"]
+  },
+  "html-css": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["htmlcssguide.md"]
+  },
+  "java": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["javaguide.md"]
+  },
+  "javascript": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["jsguide.md"]
+  },
+  "json": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["jsoncguide.md"]
+  },
+  "kotlin": {
+    "manual": "https://developer.android.com/kotlin/style-guide"
+  },
+  "markdown": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": [
+      "docguide/style.md",
+      "docguide/best_practices.md",
+      "docguide/READMEs.md"
+    ]
+  },
+  "objective-c": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["objcguide.md"]
+  },
+  "python": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["pyguide.md", "pylintrc"]
+  },
+  "r": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["Rguide.md"]
+  },
+  "rust": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["rustguide.md"]
+  },
+  "shell": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["shellguide.md"]
+  },
+  "swift": {
+    "repo": "google/swift",
+    "branch": "gh-pages",
+    "paths": ["index.md"]
+  },
+  "tcl": {
+    "manual": "https://wiki.tcl-lang.org/page/Dodekalogue"
+  },
+  "typescript": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["tsguide.md"]
+  },
+  "verilog": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["verilogguide.md"]
+  },
+  "vimscript": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["vimscriptguide.md", "vimscriptfull.md"]
+  },
+  "xml": {
+    "repo": "google/styleguide",
+    "branch": "gh-pages",
+    "paths": ["xmlguide.md"]
+  }
+}

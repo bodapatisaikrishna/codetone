@@ -1,0 +1,127 @@
+{
+  "angular": {
+    "paths": {
+      "adev/src/content/best-practices/style-guide.md": "cf70bcfef81fdd94adb08a25260bd35884f09324"
+    }
+  },
+  "common-lisp": {
+    "paths": {
+      "lispguide.md": "0917409e4ed99f65d535f00f08342dc66a4d735e"
+    }
+  },
+  "cpp": {
+    "paths": {
+      "cppguide.md": "72372684427af9861212ee7f1cdbb48b6f497857"
+    }
+  },
+  "csharp": {
+    "paths": {
+      "csharpguide.md": "577f395ca4c30868313a6b234e582129d88d68f8"
+    }
+  },
+  "dart": {
+    "paths": {
+      "src/content/effective-dart/design.md": "065a1a10ca7b2e3d955a34e9294b096f7a5ef664",
+      "src/content/effective-dart/documentation.md": "83ebb33f4768c0b568d2d07541328785aeee2199",
+      "src/content/effective-dart/style.md": "203d8441af9c32d965a2bdb12e7f204360d317a8",
+      "src/content/effective-dart/usage.md": "f751f882acad62538b7356cc90ab13c25ec5b4a4"
+    }
+  },
+  "go": {
+    "paths": {
+      "go/best-practices.md": "9d7ce97386f88b7e2c8257123425e65f60b49789",
+      "go/decisions.md": "4e404ae582e2c61ab88d5ae137afe96c4835ad38",
+      "go/guide.md": "4e404ae582e2c61ab88d5ae137afe96c4835ad38"
+    }
+  },
+  "haskell": {
+    "paths": {
+      "haskellguide.md": "a9c5f82b19811f1552d73df384a9f9d7c75ca16e"
+    }
+  },
+  "html-css": {
+    "paths": {
+      "htmlcssguide.md": "7c3eb00dd3a3308003c5c8a79c4290dc1c8a8c53"
+    }
+  },
+  "java": {
+    "paths": {
+      "javaguide.md": "ab89e73079a79f97ea705f08af902a16d3063739"
+    }
+  },
+  "javascript": {
+    "paths": {
+      "jsguide.md": "798edea5df05d5eca56c16f568c59b60c2b2d56a"
+    }
+  },
+  "json": {
+    "paths": {
+      "jsoncguide.md": "577f395ca4c30868313a6b234e582129d88d68f8"
+    }
+  },
+  "kotlin": {
+    "checked_on": "2026-11-16"
+  },
+  "markdown": {
+    "paths": {
+      "docguide/READMEs.md": "08224f0ade368c9a78a67be1c007eb7f3df8f2d1",
+      "docguide/best_practices.md": "89e0e1b454a1709f0957e4c184660dde87137209",
+      "docguide/style.md": "102d363fce6d18674d605430e3ddb5eb91487f85"
+    }
+  },
+  "objective-c": {
+    "paths": {
+      "objcguide.md": "110139e6e9b1d1d6803fc0b2dbca1d2be979a024"
+    }
+  },
+  "python": {
+    "paths": {
+      "pyguide.md": "6288a45d3fdce24235c57e6edbe3b22bc2e68d70",
+      "pylintrc": "5b8bc6b9477c0a96aea4dfebe8f91c0c2cbac67e"
+    }
+  },
+  "r": {
+    "paths": {
+      "Rguide.md": "24cfcced577a82c4c455909515fa05682c8d2fa8"
+    }
+  },
+  "rust": {
+    "paths": {
+      "rustguide.md": "cceb297e93677c31053e5e75de6b701a9204fc03"
+    }
+  },
+  "shell": {
+    "paths": {
+      "shellguide.md": "3c900a67cd1271cf40881075904385cd101fa1bf"
+    }
+  },
+  "swift": {
+    "paths": {
+      "index.md": "aadf41108af36a5ffaea2178e1077950d4fc5d3d"
+    }
+  },
+  "tcl": {
+    "checked_on": "2026-11-16"
+  },
+  "typescript": {
+    "paths": {
+      "tsguide.md": "52f2e7406a802778e44b92694d4aead252b09091"
+    }
+  },
+  "verilog": {
+    "paths": {
+      "verilogguide.md": "0de02b3671a9c28e17c331c0c6f3318ccbfcd50d"
+    }
+  },
+  "vimscript": {
+    "paths": {
+      "vimscriptfull.md": "fdf327eea026fb385c1190d5bc7262e602c989f5",
+      "vimscriptguide.md": "24cfcced577a82c4c455909515fa05682c8d2fa8"
+    }
+  },
+  "xml": {
+    "paths": {
+      "xmlguide.md": "7c3eb00dd3a3308003c5c8a79c4290dc1c8a8c53"
+    }
+  }
+}

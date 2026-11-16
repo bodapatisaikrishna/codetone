@@ -51,9 +51,33 @@ agentskills validate ./skills/codetone
 mdformat --wrap 80 --number <changed files>
 ```
 
-CI runs the test suite and checks that `adapters/` is up to date on every push and pull request. Commit the regenerated `adapters/` together with your change.
+CI runs the test suite and checks that `adapters/` is up to date on every push
+and pull request. Commit the regenerated `adapters/` together with your change.
 
 Python code follows the Google Python style: 4-space indent, 80 columns.
+
+## Keeping sheets in sync with upstream
+
+Google's guides change. Every Monday the `upstream drift` workflow compares each
+rule sheet with the upstream files it was written from (`scripts/upstream.json`)
+and opens or updates an issue labeled `upstream-drift` when one changed. Guides
+with no Git source (Kotlin, Tcl) are flagged for a manual re-read every 180
+days.
+
+To work through the issue:
+
+1. Open the compare link for each changed file and read the diff.
+2. If a rule changed, update the sheet and regenerate the adapters.
+3. Mark the sheet as checked, which records the new upstream commit in
+   `scripts/upstream.lock.json`:
+
+```sh
+python3 scripts/check_upstream.py              # see what changed
+python3 scripts/check_upstream.py --update go  # after re-checking go.md
+```
+
+Mark a sheet as checked only after you have read the upstream change, even if
+the sheet needed no edit.
 
 ## Pull requests
 

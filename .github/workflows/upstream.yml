@@ -1,0 +1,46 @@
+name: upstream drift
+
+# Weekly check that the Google style guides behind each rule sheet have not
+# changed since the sheet was last checked. Opens or updates one issue labeled
+# "upstream-drift" when something changed.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compare rule sheets with upstream guides
+        id: drift
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +e
+          python3 scripts/check_upstream.py --report drift.md
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+      - name: Open or update the drift issue
+        if: steps.drift.outputs.status != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create upstream-drift --color FBCA04 \
+            --description 'An upstream style guide changed' --force
+          number=$(gh issue list --label upstream-drift --state open \
+            --json number --jq '.[0].number')
+          if [ -n "$number" ]; then
+            gh issue edit "$number" --body-file drift.md
+          else
+            gh issue create --title 'Upstream style guides changed' \
+              --label upstream-drift --body-file drift.md
+          fi
