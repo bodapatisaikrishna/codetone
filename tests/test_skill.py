@@ -23,7 +23,9 @@ ADAPTERS = ROOT / 'adapters'
 EVALS = ROOT / 'evals'
 
 sys.path.insert(0, str(ROOT / 'scripts'))
+sys.path.insert(0, str(ROOT / 'evals'))
 import build_adapters  # pylint: disable=wrong-import-position
+import run_all_evals  # pylint: disable=wrong-import-position
 
 # A sample file name for each language, and the rule sheet it must map to.
 SAMPLES = {
@@ -214,6 +216,16 @@ def test_version_consistency():
 
     changelog = (ROOT / 'CHANGELOG.md').read_text(encoding='utf-8')
     assert f'## {skill_version}' in changelog
+
+
+@pytest.mark.parametrize('slug', sorted(run_all_evals.TEST_CASES.keys()))
+def test_skill_behavioral_and_tool_execution(slug):
+    """Verifies that each of the 24 skills actually catches violations and produces valid code."""
+    collector = []
+    run_all_evals.run_single_eval(slug, run_all_evals.TEST_CASES[slug], collector)
+    assert len(collector) == 1
+    res = collector[0]
+    assert res['verdict'] == 'PASSED', f"Behavioral test failed for {res['name']}"
 
 
 @pytest.mark.network
