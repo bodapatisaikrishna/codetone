@@ -1,5 +1,5 @@
 name: Bug report
-description: The skill, adapters or build script do not work as documented
+description: The skill, adapters, build script, tests or evals do not work as documented
 labels: ["bug"]
 body:
   - type: dropdown
@@ -14,7 +14,7 @@ body:
         - Windsurf rules
         - AGENTS.md
         - Paste-in prompts
-        - Build script
+        - Build script, tests or evals
     validations:
       required: true
   - type: textarea

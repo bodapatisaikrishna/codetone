@@ -1,6 +1,6 @@
 {
   "name": "codetone",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "CodeTone: write and review code in Google's style for 24 languages: Python, C++, Java, JavaScript, TypeScript, Go, Rust, Shell, Kotlin, Swift, HTML/CSS, Markdown and more.",
   "author": {
     "name": "Bodapati Sai Krishna"

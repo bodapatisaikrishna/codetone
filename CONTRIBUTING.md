@@ -37,20 +37,21 @@ of truth.
 ## Workflow
 
 ```sh
-pip install skills-ref mdformat mdformat-gfm
+pip install -r requirements-dev.txt
 
 # 1. Edit skills/codetone/references/<language>.md
 # 2. Regenerate the adapters
 python3 scripts/build_adapters.py
 
-# 3. Validate the skill against the Agent Skills spec
+# 3. Check everything
+SKIP_NETWORK_TESTS=1 python3 -m pytest tests/ -v
 agentskills validate ./skills/codetone
 
 # 4. Format Markdown (80 columns, numbered lists)
 mdformat --wrap 80 --number <changed files>
 ```
 
-Commit the regenerated `adapters/` together with your change.
+CI runs the test suite and checks that `adapters/` is up to date on every push and pull request. Commit the regenerated `adapters/` together with your change.
 
 Python code follows the Google Python style: 4-space indent, 80 columns.
 

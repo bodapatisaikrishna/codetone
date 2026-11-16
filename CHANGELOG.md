@@ -1,11 +1,13 @@
 # Changelog
 
-## Unreleased
+## 1.3.1 — 2026-11-16
 
-- Removed the tests, evals and CI workflow. The repository keeps the skill, the
-  generated adapters and the build script.
-- Added a contributing guide, code of conduct, security policy and issue/PR
-  templates.
+- Comprehensive testing suite: restored and expanded mechanical tests (80+ checks in `tests/test_skill.py`) and full behavioral evaluation suite (`evals/`).
+- GitHub Actions CI workflow (`.github/workflows/check.yml`) running automated spec validation and tests on every push and pull request.
+- Added `requirements-dev.txt` for standardized developer setup.
+- Standardized `Source:` attribution line in `tcl.md` for 100% uniformity across all 24 language references.
+- Re-verified all 28 external documentation URLs with automated health checks.
+- Added full community standards and developer documentation (`CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, PR and issue templates).
 
 ## 1.3.0 — 2026-11-16
 

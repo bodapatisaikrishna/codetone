@@ -1,5 +1,9 @@
 # CodeTone — Google style for every AI coding tool
 
+[![CI](https://github.com/bodapatisaikrishna/codetone/actions/workflows/check.yml/badge.svg)](https://github.com/bodapatisaikrishna/codetone/actions/workflows/check.yml)
+[![License: CC BY 3.0](https://img.shields.io/badge/License-CC_BY_3.0-blue.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-1.3.1-green.svg)](CHANGELOG.md)
+
 Teach **any LLM or AI coding agent** to write and review code in Google's style
 for **24 languages**, using condensed versions of the
 [Google Style Guides](https://github.com/google/styleguide).
@@ -132,8 +136,10 @@ codetone/
 │   ├── agents-md/                # AGENTS.md router + rule sheets
 │   └── prompts/                  # system prompts for chat apps / APIs
 ├── scripts/build_adapters.py     # regenerates adapters/ from references/
+├── tests/                        # 80+ mechanical & contract tests (pytest)
+├── evals/                        # routing & review eval fixtures and answer keys
 ├── .claude-plugin/               # Claude Code plugin + marketplace manifest
-├── .github/                      # issue and PR templates
+├── .github/                      # CI workflow, issue and PR templates
 ├── LICENSE                       # CC BY 3.0
 ├── NOTICE.md                     # attribution and changes
 ├── CONTRIBUTING.md               # how to contribute
@@ -154,7 +160,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide. In short:
 ## Author
 
 **Bodapati Sai Krishna** — designed and built this project: the skill, the
-condensed rule sheets, the multi-tool adapters and the build script.
+condensed rule sheets, the multi-tool adapters, the build script, the test suite
+and evals.
 
 ## License
 

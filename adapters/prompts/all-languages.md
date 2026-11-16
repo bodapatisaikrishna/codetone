@@ -2372,7 +2372,7 @@ Tools: Google's `maktaba` library (named by the guide). `vint` (linter) and
 
 # Tcl/Tk — conventions (condensed)
 
-Source linked from google/styleguide: https://wiki.tcl-lang.org/page/Dodekalogue
+Source: https://wiki.tcl-lang.org/page/Dodekalogue (linked from google/styleguide)
 
 Note: the "Dodekalogue" is Tcl's **twelve syntax rules**, not a full style
 guide. Below are those rules (what every Tcl reviewer must know) plus widely

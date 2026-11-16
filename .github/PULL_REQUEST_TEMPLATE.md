@@ -13,5 +13,6 @@ guide that supports it. -->
 
 - [ ] Edited only `skills/codetone/` (not `adapters/` by hand)
 - [ ] `python3 scripts/build_adapters.py` run and `adapters/` committed
+- [ ] `SKIP_NETWORK_TESTS=1 python3 -m pytest tests/` passes
 - [ ] `agentskills validate ./skills/codetone` passes
 - [ ] Markdown formatted with `mdformat --wrap 80 --number`

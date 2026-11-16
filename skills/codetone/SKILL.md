@@ -4,7 +4,7 @@ description: Write or review code and docs in Google's style for 24 languages (P
 license: CC-BY-3.0
 metadata:
   author: Bodapati Sai Krishna
-  version: "1.3.0"
+  version: "1.3.1"
   source: https://github.com/google/styleguide
 ---
 
