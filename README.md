@@ -134,12 +134,18 @@ codetone/
 ├── scripts/build_adapters.py     # regenerates adapters/ from references/
 ├── evals/                        # test fixtures, answer keys, results
 ├── .claude-plugin/               # Claude Code plugin + marketplace manifest
+├── .github/                      # CI workflow, issue and PR templates
 ├── LICENSE                       # CC BY 3.0
 ├── NOTICE.md                     # attribution and changes
+├── CONTRIBUTING.md               # how to contribute
+├── CODE_OF_CONDUCT.md            # community rules
+├── SECURITY.md                   # how to report a vulnerability
 └── CHANGELOG.md                  # release notes
 ```
 
 ## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide. In short:
 
 1. Edit only `skills/codetone/references/<language>.md`.
 2. Run `python3 scripts/build_adapters.py` to regenerate `adapters/`.
