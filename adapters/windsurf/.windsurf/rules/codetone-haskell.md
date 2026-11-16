@@ -1,0 +1,91 @@
+---
+trigger: glob
+globs: **/*.hs
+---
+
+Precedence: the project's own formatter/linter config and the existing style of the file win over these rules; otherwise apply them.
+
+# Haskell — Google Style (condensed)
+
+Source: https://google.github.io/styleguide/haskellguide.html
+
+Tools: GHC with `-Wall -Werror` (no warnings). Common extras not named by the
+guide: `hlint`, `ormolu`/`fourmolu`.
+
+## Structure
+
+- Haddock for the module and **all exported top-level items**.
+- Every module has an **explicit export list** (Template Haskell–heavy modules
+  may skip it). Don't re-export modules for convenience, except from `Internal`
+  modules or a package-level umbrella module.
+- Imports: optionally grouped (external, then internal) with one blank line
+  between; alphabetized by full module name within groups.
+- Import either qualified or with an explicit import list (both OK). Wholesale
+  imports discouraged, except modules designed for it (e.g. `Data.Bits`).
+- Qualified name = last module component
+  (`import qualified Text.Parsec as Parsec`); related modules may share a
+  prefix. Short aliases allowed for very common modules: `BS`, `BL`, `HM`, `HS`,
+  `M`, `S`, `T`, `TL`.
+- Pragmas at the very top: one `{-# OPTIONS_GHC #-}`, then one
+  `{-# LANGUAGE #-}` per extension, sorted. Enable extensions in each file —
+  never globally in the `.cabal` file. Use only the guide's list of
+  non-controversial extensions (e.g. `BangPatterns`, `GADTs`,
+  `OverloadedStrings`, `RecordWildCards`, `ScopedTypeVariables`,
+  `TemplateHaskell`); avoid others.
+- Compile cleanly with no warnings.
+
+## Style
+
+- Use layout, not braces and semicolons.
+- **Type signatures on all top-level functions.**
+- `--` comments everywhere (except pragmas or where a comment must sit
+  mid-line); `-- |` / `-- ^` for Haddock.
+- Prefer guards and pattern matching over `if … then … else`.
+
+## Idioms
+
+- **Avoid partial functions** (`head`, `tail`, `(!!)`, `minimum`, `fromJust`,
+  `read`) unless nearby code makes safety obvious. Don't write partial
+  functions; use `error` only for truly unreachable internal invariants.
+- Point-free is fine, but not when it gets contorted (`f = (g .) . h` →
+  `f x = g . h x`).
+- Learn from combinator libraries (Parsec, pretty-printers) when designing APIs.
+- Write property tests with **QuickCheck** wherever possible.
+
+## Naming
+
+- Mixed case, no underscores: `functionName`, `TypeName`. Exceptions:
+  `_`/`_name` for unused bindings, `prop_`/`test_`/`_Test` test names, trailing
+  `_` for reserved words (`type_`).
+- Short/single-letter variable names are fine in small scopes.
+- Module names singular (`Data.Map`, not `Data.Maps`).
+- Abbreviations as words: `HttpResponse`, `IpBlock` (not `HTTPResponse`), unless
+  strong precedent exists.
+
+## Formatting
+
+- **80 columns**; no trailing spaces.
+- **4-space** indentation intervals; no tabs.
+- Vertical whitespace sparingly: one blank line between declarations; two blank
+  lines after the imports and between major sections.
+- Horizontal alignment that clarifies structure (guards, case arms) is
+  encouraged.
+- `where` for local declarations: hanging — `where` on its own line indented 2,
+  bindings indented 4. Module/class/instance declarations use a trailing
+  `where`.
+- `deriving` may trail the declaration or go on its own line.
+- `case … of`: `of` on the same line as `case`; alternatives indented.
+- `let … in`: `in` on the next line, aligned under `let`.
+- `if/then/else`: indent `then` and `else`.
+- Multi-line lists/records: **leading commas**.
+- One space around operators; one space after commas and semicolons.
+
+## Review checklist
+
+- [ ] explicit export list + Haddock on exports
+- [ ] top-level type signatures; `-Wall` clean
+- [ ] no partial Prelude functions
+- [ ] 80 cols, 4-space indent, leading-comma lists
+- [ ] `HttpResponse`-style abbreviations
+
+<!-- Condensed from the Google Style Guides (https://github.com/google/styleguide), CC BY 3.0. Not affiliated with or endorsed by Google. -->

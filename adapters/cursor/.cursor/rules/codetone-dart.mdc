@@ -1,0 +1,86 @@
+---
+description: Google Dart style rules. Apply when writing or reviewing Dart code.
+globs: **/*.dart
+alwaysApply: false
+---
+
+Precedence: the project's own formatter/linter config and the existing style of the file win over these rules; otherwise apply them.
+
+# Dart — Effective Dart (condensed)
+
+Source: https://dart.dev/effective-dart (Google's style guide for Dart points
+here)
+
+Tools: `dart format` (mandatory), `dart analyze` with the `lints` /
+`flutter_lints` package (`package:lints/recommended.yaml`).
+
+## Style
+
+- **Formatting is whatever `dart format` produces** — don't hand-format. Line
+  length 80 by default.
+- Use curly braces for all flow-control statements (a single-line `if` with no
+  `else` may omit them).
+
+## Naming
+
+| Kind                                                                | Style                        |
+| ------------------------------------------------------------------- | ---------------------------- |
+| classes, enums, typedefs, extensions, type params                   | `UpperCamelCase`             |
+| packages, directories, source files, import prefixes                | `lowercase_with_underscores` |
+| variables, functions, members, params, named constants, enum values | `lowerCamelCase`             |
+
+- Prefer `lowerCamelCase` for constants in new code (`const defaultTimeout`);
+  `SCREAMING_CAPS` only to match existing code or a parallel Java API.
+- Acronyms longer than two letters are capitalized like words (`HttpRequest`,
+  `IOStream` for 2-letter `IO`).
+- Don't use a leading `_` except for library-private identifiers; don't use
+  prefix letters (`kFoo`, `mBar`).
+- Use `_`/`__` for unused callback parameters (or wildcard `_` in newer Dart).
+
+## Ordering
+
+- Directives order: `dart:` imports → `package:` imports → relative imports →
+  `export`s, each section alphabetized, separated by blank lines.
+
+## Documentation
+
+- `///` doc comments (not `/** */`); start with a single-sentence summary;
+  separate paragraphs with blank lines.
+- Document public APIs; use square brackets `[name]` to reference identifiers;
+  explain parameters, return values, and exceptions in prose (no `@param` tags).
+- `//` for implementation comments, written as sentences.
+
+## Usage
+
+- Prefer relative imports within your own `lib/`; never import from another
+  package's `src/`.
+- Use adjacent string literals for concatenation across lines; interpolation
+  over `+`.
+- Use collection literals; `isEmpty`/`isNotEmpty` instead of `length == 0`;
+  `whereType<T>()` to filter by type.
+- Don't initialize variables to `null` explicitly; don't use `late` when a
+  constructor initializer works.
+- Use initializing formals (`this.x`); `;` instead of `{}` for empty constructor
+  bodies; no `new` keyword; avoid redundant `const`.
+- Use `rethrow` to rethrow; don't catch `Error` types or catch without `on`
+  clause.
+- Use `async`/`await` over raw futures.
+
+## Design
+
+- Make declarations private by default; use `final` fields and `const`
+  constructors where possible.
+- Boolean properties/variables: non-imperative verb phrases (`isEnabled`,
+  `hasElements`); named boolean parameters may drop the verb (`enabled:`).
+- Avoid positional boolean params — use named parameters.
+- Annotate public APIs, parameters, return types, and variables without
+  initializers; don't annotate initialized local variables.
+
+## Review checklist
+
+- [ ] `dart format` clean, analyzer clean
+- [ ] `lowerCamelCase` constants, `lowercase_with_underscores` files
+- [ ] import ordering; no `new`
+- [ ] `///` docs on public API
+
+<!-- Condensed from the Google Style Guides (https://github.com/google/styleguide), CC BY 3.0. Not affiliated with or endorsed by Google. -->

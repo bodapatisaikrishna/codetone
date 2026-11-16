@@ -1,0 +1,104 @@
+---
+trigger: glob
+globs: **/*.swift
+---
+
+Precedence: the project's own formatter/linter config and the existing style of the file win over these rules; otherwise apply them.
+
+# Swift — Google Style (condensed)
+
+Source: https://google.github.io/swift/ (linked from google/styleguide)
+
+Tools: `swift-format` (Apple's formatter originated from Google's style) with a
+matching configuration; `swiftlint` optional.
+
+## Source files
+
+- Name files after their primary type (`MyType.swift`); extensions adding
+  conformance: `MyType+MyProtocol.swift`; misc additions:
+  `MyType+Additions.swift`.
+- UTF-8; ASCII space only for whitespace, **never tabs**.
+- Use special escapes (`\t`, `\n`) rather than `\u{}`; always escape invisible
+  characters; never mix literal non-ASCII characters and `\u{}` escapes in one
+  string.
+
+## Formatting
+
+- Column limit **100** (exceptions: unbreakable URLs, `import` lines, generated
+  code).
+- **2-space** indentation; continuation lines +2.
+- K&R braces: no line break before `{`; `}` on its own line (except
+  closures/empty blocks).
+- **No semicolons.** One statement per line.
+- Spaces around binary/ternary operators; after (not before) `,` and `:`; none
+  around `.`, `...`, `..<`.
+- `//` comments; end-of-line comments have at least two spaces before `//` and
+  exactly one after.
+- No horizontal alignment (except obviously tabular data).
+- No parentheses around the condition of `if`, `guard`, `while`, `switch`.
+- Trailing commas when each collection element is on its own line.
+- One `case` per line in enums unless all cases are simple and fit on one line;
+  no `()` on cases without associated values.
+
+## Imports and structure
+
+- Import whole modules, not individual declarations, and only what the file
+  uses.
+- Imports not wrapped; grouped: module imports → individual declaration imports
+  → `@testable` imports; each group sorted, one blank line between.
+- Group members with `// MARK: -` comments; order logically.
+
+## Naming
+
+- Follow Apple's **API Design Guidelines** (clarity at the point of use;
+  `lowerCamelCase` values/functions, `UpperCamelCase` types).
+- Use access control (`private`/`fileprivate`/`internal`), **not** underscore
+  prefixes, to hide things.
+- ASCII identifiers unless a Unicode name has clear domain meaning.
+- Globals/constants `lowerCamelCase` — no `k` or `g` prefixes.
+- Static properties returning their own type: no type-name suffix
+  (`UIColor.red`, not `redColor`).
+- Initializer params named after the properties they set; assign with `self.`.
+
+## Language practices
+
+- Compile without warnings.
+- Shorthand types: `[T]`, `[K: V]`, `T?`.
+- `Void` in closure/function-type returns; omit `-> Void` in `func`
+  declarations.
+- Optionals instead of sentinel values (`-1`, `""`).
+- Errors: `throws` with error enums; `try?` when details don't matter. **`try!`
+  forbidden** outside tests (except provably-safe cases like literal regexes).
+- **Avoid force-unwraps (`!`) and force-casts (`as!`)** unless a comment proves
+  safety; tests exempt.
+- Avoid implicitly unwrapped optionals except UI lifecycle outlets and tests.
+- Omitting the default (`internal`) access level is allowed; never put an access
+  level on an extension itself — mark each member instead.
+- Nest related types; use caseless `enum` as a namespace.
+- `guard` for early exits; `for … where` instead of `for` + single `if`.
+- `let`/`var` before each binding in patterns (`case .point(let x, let y)`).
+- Use trailing-closure syntax for a single final closure; label closures when
+  there are several.
+- Don't overload functions differing only by closure label.
+- `_` separators in long numeric literals (`1_000_000`).
+- Trapping arithmetic by default; `&+`-style masking only for intentional
+  modular math, with a comment.
+- Avoid custom operators unless meaning is clear in the domain; no playground
+  literals in production.
+
+## Documentation
+
+- `///` doc comments only (no `/** */`).
+- Start with a single-sentence summary; document every `open`/`public`
+  declaration.
+- Tags in order: `- Parameter(s):`, `- Returns:`, `- Throws:` — each ending with
+  a period.
+
+## Review checklist
+
+- [ ] 100 cols, 2-space indent, no semicolons, no condition parens
+- [ ] no `try!`, `!`, `as!` without justification
+- [ ] access control instead of `_` prefixes; no `k` prefixes
+- [ ] `///` docs on public API with Parameter/Returns/Throws
+
+<!-- Condensed from the Google Style Guides (https://github.com/google/styleguide), CC BY 3.0. Not affiliated with or endorsed by Google. -->

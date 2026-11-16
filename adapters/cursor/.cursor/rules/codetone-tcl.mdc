@@ -1,0 +1,73 @@
+---
+description: Google Tcl/Tk style rules. Apply when writing or reviewing Tcl/Tk code.
+globs: **/*.tcl
+alwaysApply: false
+---
+
+Precedence: the project's own formatter/linter config and the existing style of the file win over these rules; otherwise apply them.
+
+# Tcl/Tk — conventions (condensed)
+
+Source linked from google/styleguide: https://wiki.tcl-lang.org/page/Dodekalogue
+
+Note: the "Dodekalogue" is Tcl's **twelve syntax rules**, not a full style
+guide. Below are those rules (what every Tcl reviewer must know) plus widely
+used community conventions (Tcl Style Guide by Ray Johnson / TIP practice).
+Treat the conventions as defaults when the project has none.
+
+Tools: `nagelfar` (syntax checker/linter), `tclchecker`.
+
+## The twelve rules — consequences for writing code
+
+1. **Commands** — a script is commands separated by unquoted newlines or `;`
+    (`]` also ends a command inside `[ ]` substitution).
+2. **Evaluation** — a command is evaluated in two steps: the interpreter splits
+    it into words and substitutes; the first word names the command.
+3. **Words** — words are separated by whitespace (newlines separate commands).
+4. **Double quotes** — `"…"` group a word and still allow `$`, `[ ]`, `\`
+    substitution.
+5. **Argument expansion** — `{*}` expands one word into multiple words.
+6. **Braces** — `{…}` group a word with **no** substitution (except
+    backslash-newline).
+7. **Command substitution** — `[script]` is replaced by the result of a nested
+    script.
+8. **Variable substitution** — `$name`, `${name}`, `$arr(idx)`.
+9. **Backslash substitution** — `\n`, `\t`, `\x41`, `\uXXXX`,
+    backslash-newline.
+10. **Comments** — `#` starts a comment **only** where a command could start
+    (use `;#` after a command on the same line).
+11. **Order of substitution** — each character is processed once, left to right
+    (no double substitution).
+12. **Substitution and word boundaries** — substitutions never change word
+    boundaries, except `{*}` argument expansion.
+
+## Practical rules (community practice, not part of the Dodekalogue)
+
+- **Always brace `expr` expressions** and `if`/`while` conditions:
+  `if {$x > 0} { … }` — faster and avoids double substitution/injection.
+- Brace bodies of `proc`, `if`, `for`, `foreach`, `while`.
+- Use `{*}` instead of `eval` to expand argument lists; avoid `eval` on
+  untrusted data.
+- Build lists with `list`/`lappend`, never by string concatenation.
+
+## Community conventions
+
+- **4-space** indentation, no tabs; ~80-column lines.
+- Opening brace on the same line as the command; `} else {` on one line.
+- Namespaces for packages (`namespace eval ::mypkg { … }`); export public procs
+  explicitly.
+- Procedure names: lowerCamelCase or lower_snake inside a namespace, consistent
+  per package; private helpers clearly marked (e.g. not exported).
+- Variables: lowercase/lowerCamelCase; constants and global arrays sparingly.
+- Every file starts with a header comment; every exported proc has a comment
+  describing args, results, and side effects.
+- Use `package provide`/`package require` with versions.
+
+## Review checklist
+
+- [ ] `expr`/conditions braced
+- [ ] `{*}` not `eval`; lists via `list`
+- [ ] comments only at command start (`;#` inline)
+- [ ] namespaced, documented procs; 4-space indent
+
+<!-- Condensed from the Google Style Guides (https://github.com/google/styleguide), CC BY 3.0. Not affiliated with or endorsed by Google. -->
