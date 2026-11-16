@@ -1,0 +1,17 @@
+name: New language or tool request
+description: Suggest a language or AI tool to support
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What should be added?
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source style guide or tool docs
+      description: Link the official guide or the tool's rules-file documentation.
+    validations:
+      required: true

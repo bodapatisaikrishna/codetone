@@ -1,0 +1,25 @@
+name: Wrong or missing rule
+description: A rule sheet disagrees with the original Google guide
+labels: ["accuracy"]
+body:
+  - type: input
+    id: sheet
+    attributes:
+      label: Rule sheet
+      description: Which file in skills/codetone/references/?
+      placeholder: python.md
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What the sheet says
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What the original guide says
+      description: Link the exact section of the guide.
+    validations:
+      required: true

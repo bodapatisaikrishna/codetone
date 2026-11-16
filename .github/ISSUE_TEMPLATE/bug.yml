@@ -1,0 +1,32 @@
+name: Bug report
+description: The skill, adapters, build script, or tests do not work as documented
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Agent Skill (SKILL.md)
+        - Claude Code plugin
+        - Cursor rules
+        - Copilot instructions
+        - Windsurf rules
+        - AGENTS.md
+        - Paste-in prompts
+        - Build script or tests
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Include the tool and its version, and the model if relevant.
+    validations:
+      required: true
