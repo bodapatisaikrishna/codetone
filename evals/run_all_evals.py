@@ -243,7 +243,7 @@ export const DEFAULT_TIMEOUT_MS = 5000;
     'typescript': {
         'name': 'TypeScript',
         'ref': 'typescript.md',
-        'tool_cmd': lambda p: ['tsc', '--noEmit', '--strict', str(p)],
+        'tool_cmd': lambda p: ['tsc', '--noEmit', '--strict', '--target', 'es2022', str(p)],
         'filename': 'user_store.ts',
         'seeded_code': '''
 export default class UserStore {
@@ -283,7 +283,7 @@ export class UserStore {
     'angular': {
         'name': 'Angular',
         'ref': 'angular.md',
-        'tool_cmd': lambda p: ['tsc', '--noEmit', str(p)],
+        'tool_cmd': lambda p: ['tsc', '--noEmit', '--target', 'es2022', str(p)],
         'filename': 'user-profile.component.ts',
         'seeded_code': '''
 class userProfile {
@@ -1101,7 +1101,9 @@ def run_single_eval(slug, test_data, results_collector):
             cmd = tool_cmd_fn(file_path)
             tool_name = cmd[0]
             try:
-                proc = subprocess.run(cmd, cwd=tmpdir, capture_output=True, text=True, timeout=15)
+                proc = subprocess.run(cmd, cwd=tmpdir, capture_output=True, text=True,
+                                      # Cold compilers (swiftc on CI) are slow.
+                                      timeout=120)
                 tool_passed = (proc.returncode == 0)
                 if not tool_passed:
                     print(f"Tool failed for {name} ({cmd}):\nStdout: {proc.stdout}\nStderr: {proc.stderr}")
