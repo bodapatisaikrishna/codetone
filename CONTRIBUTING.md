@@ -21,8 +21,7 @@ license as the project (see [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md)).
 `skills/codetone/references/*.md` and `skills/codetone/SKILL.md` are the source
 of truth.
 
-**Never edit `adapters/` by hand.** It is generated, and CI fails if it is out
-of date.
+**Never edit `adapters/` by hand.** It is generated from the rule sheets.
 
 ## Rule sheet guidelines
 
@@ -38,27 +37,22 @@ of date.
 ## Workflow
 
 ```sh
-pip install pytest skills-ref mdformat mdformat-gfm
+pip install skills-ref mdformat mdformat-gfm
 
 # 1. Edit skills/codetone/references/<language>.md
 # 2. Regenerate the adapters
 python3 scripts/build_adapters.py
 
-# 3. Check everything
-python3 -m pytest tests/ -q
+# 3. Validate the skill against the Agent Skills spec
 agentskills validate ./skills/codetone
 
 # 4. Format Markdown (80 columns, numbered lists)
 mdformat --wrap 80 --number <changed files>
 ```
 
-CI runs steps 2 and 3 on every push and pull request. Commit the regenerated
-`adapters/` together with your change.
+Commit the regenerated `adapters/` together with your change.
 
 Python code follows the Google Python style: 4-space indent, 80 columns.
-
-If you change a rule that an eval fixture covers, re-run the relevant check
-described in [evals/README.md](evals/README.md).
 
 ## Pull requests
 

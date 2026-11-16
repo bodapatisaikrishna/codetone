@@ -132,9 +132,8 @@ codetone/
 │   ├── agents-md/                # AGENTS.md router + rule sheets
 │   └── prompts/                  # system prompts for chat apps / APIs
 ├── scripts/build_adapters.py     # regenerates adapters/ from references/
-├── evals/                        # test fixtures, answer keys, results
 ├── .claude-plugin/               # Claude Code plugin + marketplace manifest
-├── .github/                      # CI workflow, issue and PR templates
+├── .github/                      # issue and PR templates
 ├── LICENSE                       # CC BY 3.0
 ├── NOTICE.md                     # attribution and changes
 ├── CONTRIBUTING.md               # how to contribute
@@ -151,13 +150,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide. In short:
 2. Run `python3 scripts/build_adapters.py` to regenerate `adapters/`.
 3. Keep each rule sheet short — rules, not essays — written in your own words,
    with a `Source:` link and a `Review checklist`.
-4. If you change a rule, re-run the relevant test in `evals/`.
 
 ## Author
 
 **Bodapati Sai Krishna** — designed and built this project: the skill, the
-condensed rule sheets, the multi-tool adapters, the build script, the tests and
-the evals.
+condensed rule sheets, the multi-tool adapters and the build script.
 
 ## License
 

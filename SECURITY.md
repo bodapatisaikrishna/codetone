@@ -3,13 +3,12 @@
 ## What this project is
 
 CodeTone is Markdown rule sheets plus a small build script
-(`scripts/build_adapters.py`) and tests. It does not run a service or handle
-user data.
+(`scripts/build_adapters.py`). It does not run a service or handle user data.
 
 ## What counts as a security issue
 
-- The build script or CI workflow can be made to write outside the repository,
-  run attacker-controlled code, or leak secrets.
+- The build script can be made to write outside the repository, run
+  attacker-controlled code, or leak secrets.
 - A rule sheet or generated file contains text that would make an AI agent take
   a harmful action (for example hidden instructions to exfiltrate data or run
   commands).

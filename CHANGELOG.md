@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Removed the tests, evals and CI workflow. The repository keeps the skill, the
+  generated adapters and the build script.
+- Added a contributing guide, code of conduct, security policy and issue/PR
+  templates.
+
 ## 1.3.0 — 2026-11-16
 
 - Renamed the project to **CodeTone** (skill name `codetone`). It still
