@@ -515,6 +515,8 @@ public sealed class OrderService {
         'name': 'Objective-C',
         'ref': 'objective-c.md',
         'tool_cmd': lambda p: ['clang', '-x', 'objective-c', '-fsyntax-only', str(p)],
+        # Needs the Foundation framework, which only macOS ships.
+        'platforms': ['darwin'],
         'filename': 'ItemManager.m',
         'seeded_code': '''
 #import "ItemManager.h"
@@ -1045,6 +1047,19 @@ proc compute_increment {value} {
 }
 
 
+def tool_skip_reason(test_data):
+    """Returns why the native tool check can't run here, or None if it can."""
+    platforms = test_data.get('platforms')
+    if platforms and sys.platform not in platforms:
+        return f"needs {', '.join(platforms)} (running on {sys.platform})"
+    tool_cmd_fn = test_data.get('tool_cmd')
+    if tool_cmd_fn is not None:
+        tool = tool_cmd_fn(pathlib.Path('x'))[0]
+        if shutil.which(tool) is None:
+            return f'{tool} is not installed'
+    return None
+
+
 def run_single_eval(slug, test_data, results_collector):
     name = test_data['name']
     ref_file = REFS / test_data['ref']
@@ -1064,6 +1079,20 @@ def run_single_eval(slug, test_data, results_collector):
     tool_cmd_fn = test_data.get('tool_cmd')
     tool_passed = True
     tool_name = "N/A (Linter/Grammar)"
+    skip_reason = tool_skip_reason(test_data)
+
+    if skip_reason is not None:
+        results_collector.append({
+            'slug': slug,
+            'name': name,
+            'checklist_items': len(checklist),
+            'seeded_violations': len(seeded_violations),
+            'tool_name': tool_cmd_fn(pathlib.Path('x'))[0],
+            'tool_passed': None,
+            'verdict': 'SKIPPED',
+            'skip_reason': skip_reason,
+        })
+        return
 
     if tool_cmd_fn is not None:
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -1110,12 +1139,15 @@ def main():
     for r in results:
         status_str = f"\033[92m{r['verdict']}\033[0m" if r['verdict'] == 'PASSED' else f"\033[91m{r['verdict']}\033[0m"
         print(f"{r['name']:<22} | {r['checklist_items']:<10} | {r['seeded_violations']:<18} | {r['tool_name'] + ' (ok)':<20} | {status_str}")
-        if r['verdict'] != 'PASSED':
+        if r['verdict'] == 'FAILED':
             all_passed = False
+        if r['verdict'] == 'SKIPPED':
+            print(f"  skipped: {r['skip_reason']}")
 
+    skipped = sum(1 for r in results if r['verdict'] == 'SKIPPED')
     print("=" * 80)
-    print(f"Summary: {sum(1 for r in results if r['verdict'] == 'PASSED')}/{len(results)} languages verified.")
-    if all_passed:
+    print(f"Summary: {sum(1 for r in results if r['verdict'] == 'PASSED')}/{len(results)} languages verified, {skipped} skipped.")
+    if all_passed and not skipped:
         print("ALL 24 SKILLS FULLY VERIFIED AND WORKING IN PRACTICE!")
     return 0 if all_passed else 1
 

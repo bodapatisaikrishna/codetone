@@ -225,6 +225,8 @@ def test_skill_behavioral_and_tool_execution(slug):
     run_all_evals.run_single_eval(slug, run_all_evals.TEST_CASES[slug], collector)
     assert len(collector) == 1
     res = collector[0]
+    if res['verdict'] == 'SKIPPED':
+        pytest.skip(f"{res['name']}: {res['skip_reason']}")
     assert res['verdict'] == 'PASSED', f"Behavioral test failed for {res['name']}"
 
 
