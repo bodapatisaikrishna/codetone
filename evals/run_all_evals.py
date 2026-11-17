@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Comprehensive Behavioral Verification Runner for all 24 CodeTone skills.
+"""Automated sanity checks for the 24 CodeTone rule sheets.
 
-Tests both:
-1. Review Mode (Mode B): Seeded violations are accurately caught, categorized
-   (Must fix / Should fix / Nit), and matched against the language rules.
-2. Write Mode (Mode A): Compliant code satisfies all Review Checklist items
-   and compiles/executes cleanly using real native compilers & linters.
+This does not call a model. For each language it checks that the rule sheet
+has a review checklist, that the test case lists its seeded violations, and
+that a hand-written compliant sample passes the language's native tool when
+that tool is installed. See evals/README.md for the model evals.
 """
 
 import json
@@ -1125,7 +1124,7 @@ def run_single_eval(slug, test_data, results_collector):
 
 def main():
     print("=" * 80)
-    print("CodeTone 24-Language Behavioral & Tool Verification Suite")
+    print("CodeTone rule sheet sanity checks (no model involved)")
     print("=" * 80)
     
     results = []
@@ -1150,7 +1149,7 @@ def main():
     print("=" * 80)
     print(f"Summary: {sum(1 for r in results if r['verdict'] == 'PASSED')}/{len(results)} languages verified, {skipped} skipped.")
     if all_passed and not skipped:
-        print("ALL 24 SKILLS FULLY VERIFIED AND WORKING IN PRACTICE!")
+        print("All sanity checks passed.")
     return 0 if all_passed else 1
 
 
