@@ -1,5 +1,6 @@
 {
   "name": "codetone",
+  "description": "Google's style guides as short rules for AI coding agents, 24 languages.",
   "owner": {
     "name": "Bodapati Sai Krishna"
   },
