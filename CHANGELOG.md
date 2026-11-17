@@ -1,21 +1,26 @@
 # Changelog
 
-## Unreleased
+## 1.3.1 — 2026-11-17
 
-- Added upstream drift checking: `scripts/upstream.json` maps each rule sheet
-  to the files it was written from, `scripts/upstream.lock.json` records the
+- Restored and expanded the mechanical tests in `tests/` and the evals in
+  `evals/`, and restored the CI workflow. CI installs TypeScript and skips an
+  eval, with the reason, when its compiler is unavailable (Objective-C needs
+  macOS).
+- Added automated sanity checks (`evals/run_all_evals.py`) for all 24 rule
+  sheets. They do not call a model; `evals/README.md` explains what they cover
+  and keeps the model eval results separate.
+- Added upstream drift checking: `scripts/upstream.json` maps each rule sheet to
+  the files it was written from, `scripts/upstream.lock.json` records the
   upstream commit each was last checked against, and a weekly workflow opens an
   issue when a guide changes. Baseline recorded on 2026-11-16, the date of the
   1.2.0 fact-check.
-
-## 1.3.1 — 2026-11-16
-
-- Comprehensive testing suite: restored and expanded mechanical tests (80+ checks in `tests/test_skill.py`) and full behavioral evaluation suite (`evals/`).
-- GitHub Actions CI workflow (`.github/workflows/check.yml`) running automated spec validation and tests on every push and pull request.
-- Added `requirements-dev.txt` for standardized developer setup.
-- Standardized `Source:` attribution line in `tcl.md` for 100% uniformity across all 24 language references.
-- Re-verified all 28 external documentation URLs with automated health checks.
-- Added full community standards and developer documentation (`CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, PR and issue templates).
+- Code (`scripts/`, `tests/`, `evals/`, `.github/`) is now MIT licensed
+  (`LICENSE-CODE`). Rule sheets and docs stay CC BY 3.0.
+- Added `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, issue and pull
+  request templates, `CITATION.cff` and `requirements-dev.txt`.
+- README explains what CodeTone is for, with an example and Windows install
+  steps.
+- `tcl.md`: made the `Source:` line match the other sheets.
 
 ## 1.3.0 — 2026-11-16
 

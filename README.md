@@ -1,7 +1,8 @@
 # CodeTone — Google style for every AI coding tool
 
 [![CI](https://github.com/bodapatisaikrishna/codetone/actions/workflows/check.yml/badge.svg)](https://github.com/bodapatisaikrishna/codetone/actions/workflows/check.yml)
-[![License: CC BY 3.0](https://img.shields.io/badge/License-CC_BY_3.0-blue.svg)](LICENSE)
+[![Content: CC BY 3.0](https://img.shields.io/badge/content-CC_BY_3.0-blue.svg)](LICENSE)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE-CODE)
 [![Version](https://img.shields.io/badge/version-1.3.1-green.svg)](CHANGELOG.md)
 
 **AI coding assistants write code in whatever style they happen to guess.**
@@ -119,6 +120,15 @@ git clone https://github.com/bodapatisaikrishna/codetone.git
 cp -r codetone/skills/codetone <your tool's skills folder>
 ```
 
+On Windows (PowerShell), the copy step is:
+
+```powershell
+Copy-Item -Recurse codetone\skills\codetone <your tool's skills folder>
+```
+
+No Git? Download `codetone.zip` from [Releases](../../releases) and unzip it
+into your tool's skills folder.
+
 Common skills folders (project level): `.claude/skills/`, `.agents/skills/`
 (Codex and others), `.github/skills/` (Copilot), `.gemini/skills/`,
 `.cursor/skills/`. Check your tool's docs for its user-level folder.
@@ -201,11 +211,13 @@ codetone/
 ├── evals/                        # routing & review eval fixtures and answer keys
 ├── .claude-plugin/               # Claude Code plugin + marketplace manifest
 ├── .github/                      # CI workflow, issue and PR templates
-├── LICENSE                       # CC BY 3.0
+├── LICENSE                       # CC BY 3.0 (content)
+├── LICENSE-CODE                  # MIT (code)
 ├── NOTICE.md                     # attribution and changes
 ├── CONTRIBUTING.md               # how to contribute
 ├── CODE_OF_CONDUCT.md            # community rules
 ├── SECURITY.md                   # how to report a vulnerability
+├── CITATION.cff                  # how to cite this project
 └── CHANGELOG.md                  # release notes
 ```
 
@@ -232,6 +244,12 @@ and evals.
 
 ## License
 
-Content is adapted from the Google Style Guides and licensed under
-[CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). See
-[LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).
+- **Rule sheets, skill, adapters and docs:** adapted from the Google Style
+  Guides and licensed under
+  [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+  ([LICENSE](LICENSE)). You can use them anywhere, including commercially, as
+  long as you credit the source.
+- **Code** (`scripts/`, `tests/`, `evals/`, `.github/`): MIT
+  ([LICENSE-CODE](LICENSE-CODE)).
+
+See [NOTICE.md](NOTICE.md) for attribution details.

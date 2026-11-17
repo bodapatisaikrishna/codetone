@@ -4,8 +4,10 @@ Thanks for helping. CodeTone is a set of short rule sheets, so the most useful
 contributions are **accuracy fixes**: a rule that is wrong, overstated, or
 missing compared with the original Google guide.
 
-By contributing you agree that your contribution is released under the same
-license as the project (see [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md)).
+By contributing you agree that your contribution is released under the project's
+licenses: MIT for code in `scripts/`, `tests/`, `evals/` and `.github/`
+([LICENSE-CODE](LICENSE-CODE)), and CC BY 3.0 for everything else
+([LICENSE](LICENSE)). See [NOTICE.md](NOTICE.md).
 
 ## Before you start
 

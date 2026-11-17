@@ -41,5 +41,10 @@ Please refer to each original site for its own license terms.
 
 Copyright 2026 Bodapati Sai Krishna.
 
-`SKILL.md`, `README.md` and the plugin manifests are released under the same CC
-BY 3.0 license as the content they organize.
+This repository uses two licenses:
+
+- **Code** — `scripts/`, `tests/`, `evals/` and `.github/` — is released under
+  the MIT License. See `LICENSE-CODE`.
+- **Everything else** — the rule sheets, `SKILL.md`, the generated `adapters/`,
+  the plugin manifests and the documentation — is released under CC BY 3.0, the
+  same license as the Google guides it is adapted from. See `LICENSE`.

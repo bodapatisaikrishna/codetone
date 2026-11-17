@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use CodeTone in your work, please cite it as below."
+title: "CodeTone: Google's style guides as short rules for AI coding agents"
+type: software
+authors:
+  - family-names: "Bodapati"
+    given-names: "Sai Krishna"
+repository-code: "https://github.com/bodapatisaikrishna/codetone"
+version: "1.3.1"
+date-released: "2026-11-17"
+license: CC-BY-3.0
+keywords:
+  - agent-skills
+  - style-guide
+  - code-review
+  - llm
+references:
+  - type: software
+    title: "Google Style Guides"
+    authors:
+      - name: "Google LLC"
+    repository-code: "https://github.com/google/styleguide"
+    license: CC-BY-3.0
